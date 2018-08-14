@@ -8,7 +8,6 @@
 (define-key *paredit-mode-keymap* "M-l" 'paredit-slurp)
 (define-key *paredit-mode-keymap* "M-h" 'paredit-barf)
 
-(pushnew '("\\.jsx$" . lem-js-mode:js-mode) lem:*auto-mode-alist*)
 (lem:add-hook lem:*find-file-hook*
               (lambda (buffer)
                 (when (eq (buffer-major-mode buffer) 'lem-lisp-mode:lisp-mode)
