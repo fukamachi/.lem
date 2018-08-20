@@ -9,6 +9,5 @@
 (define-key *global-keymap* "Return" 'lem.language-mode:newline-and-indent)
 (setf *scroll-recenter-p* nil)
 
-(load #P"~/.lem/modes/10-vi.lisp")
-(load #P"~/.lem/modes/10-paredit.lisp")
-(load #P"~/.lem/modes/10-auto-save.lisp")
+(let ((asdf:*central-registry* (cons #P"~/.lem/" asdf:*central-registry*)))
+  (ql:quickload :lem-my-init))
