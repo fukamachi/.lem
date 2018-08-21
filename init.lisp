@@ -3,9 +3,6 @@
         #:lem))
 (in-package :lem-my-init)
 
-(pushnew '("\\.json$" . lem-js-mode:js-mode) lem:*auto-mode-alist*)
-(pushnew '("\\.jsx$" . lem-js-mode:js-mode) lem:*auto-mode-alist*)
-
 (define-key *global-keymap* "Return" 'lem.language-mode:newline-and-indent)
 (setf *scroll-recenter-p* nil)
 
