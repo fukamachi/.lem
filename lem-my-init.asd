@@ -3,8 +3,7 @@
   :license "BSD 2-Clause"
   :description "Configurations for lem"
   :serial t
-  :depends-on ("lem-trailing-spaces"
-               "lem-lisp-mode")
+  :depends-on ("lem-trailing-spaces")
   :components ((:file "modes/10-vi")
                (:file "modes/10-paredit")
                (:file "modes/10-auto-save")
