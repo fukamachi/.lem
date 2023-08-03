@@ -16,12 +16,13 @@
 (define-command delete-next-sexp-on-paredit-mode () ()
   (if (find 'paredit-mode (buffer-minor-modes (current-buffer)))
       (kill-sexp)
-      (lem-vi-mode.commands:vi-delete-line)))
+      (lem-vi-mode/commands:vi-delete-line)))
 (define-command change-next-sexp-on-paredit-mode () ()
   (if (find 'paredit-mode (buffer-minor-modes (current-buffer)))
       (progn
         (kill-sexp)
-        (lem-vi-mode.core:change-state 'lem-vi-mode.core:insert))
-      (lem-vi-mode.commands:vi-clear-line)))
+        (lem-vi-mode/core:change-state 'lem-vi-mode/core:insert))
+      (lem-vi-mode/commands:vi-change-line)))
+
 (define-key *command-keymap* "D" 'delete-next-sexp-on-paredit-mode)
 (define-key *command-keymap* "C" 'change-next-sexp-on-paredit-mode)
