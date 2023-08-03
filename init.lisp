@@ -9,6 +9,7 @@
 (let ((asdf:*central-registry* (cons #P"~/.lem/" asdf:*central-registry*)))
   (ql:quickload :lem-my-init))
 
-(define-command slime-qlot-exec (directory) ((list (prompt-for-directory "Project directory: " (buffer-directory))))
-  (change-directory directory)
-  (lem-lisp-mode:run-slime (lem-lisp-mode::get-lisp-command :prefix "qlot exec ")))
+(define-command slime-qlot-exec (directory) ((prompt-for-directory (format nil "Project directory (~A): " (buffer-directory))))
+  (let ((command (first (lem-lisp-mode/implementation::list-roswell-with-qlot-commands))))
+    (when command
+      (lem-lisp-mode:run-slime command :directory directory))))
