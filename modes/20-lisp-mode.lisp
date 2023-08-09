@@ -16,3 +16,8 @@
 (lem:add-hook lem-lisp-mode:*lisp-repl-mode-hook*
               (lambda ()
                 (lem-vi-mode/core:change-state 'lem-vi-mode/core:insert)))
+
+;; For SLDB mode, change the vi-mode to NORMAL.
+(lem:add-hook lem-lisp-mode:*lisp-sldb-mode-hook*
+              (lambda ()
+                (lem-vi-mode/core:change-state 'lem-vi-mode/core:normal)))
