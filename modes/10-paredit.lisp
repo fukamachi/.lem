@@ -84,4 +84,5 @@
 (define-key *command-keymap* "(" 'my-sexp-move-to-prev-bracket)
 (define-key *command-keymap* ")" 'my-sexp-move-to-next-bracket)
 (define-key *insert-keymap* "(" 'paredit-insert-paren)
+(define-key *insert-keymap* ")" 'paredit-close-parenthesis)
 (define-key *insert-keymap* "\"" 'paredit-insert-doublequote)
