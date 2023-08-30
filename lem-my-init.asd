@@ -4,9 +4,10 @@
   :description "Configurations for lem"
   :serial t
   :depends-on ("lem-trailing-spaces"
-               "lem-lisp-mode")
+               "lem-lisp-mode"
+               "lem-vi-mode"
+               "lem-vi-sexp")
   :components ((:file "modes/10-vi")
-               (:file "modes/10-paredit")
                (:file "modes/10-auto-save")
                (:file "modes/10-trailing-spaces")
                (:file "modes/20-lisp-mode")))
