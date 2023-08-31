@@ -13,8 +13,10 @@
     (when command
       (lem-lisp-mode:run-slime command :directory directory))))
 
-(define-command suspend-editor () ()
-  (charms/ll:endwin)
-  (sb-posix:kill (sb-posix:getpid) sb-unix:sigtstp))
+#+lem-ncurses
+(progn
+  (define-command suspend-editor () ()
+    (charms/ll:endwin)
+    (sb-posix:kill (sb-posix:getpid) sb-unix:sigtstp))
 
-(define-key *global-keymap* "C-z" 'suspend-editor)
+  (define-key *global-keymap* "C-z" 'suspend-editor))
