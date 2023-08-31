@@ -3,7 +3,6 @@
         #:lem))
 (in-package :lem-my-init)
 
-;(define-key *global-keymap* "Return" 'lem.language-mode:newline-and-indent)
 (setf *scroll-recenter-p* nil)
 
 (let ((asdf:*central-registry* (cons #P"~/.lem/" asdf:*central-registry*)))
@@ -13,3 +12,9 @@
   (let ((command (first (lem-lisp-mode/implementation::list-roswell-with-qlot-commands))))
     (when command
       (lem-lisp-mode:run-slime command :directory directory))))
+
+(define-command suspend-editor () ()
+  (charms/ll:endwin)
+  (sb-posix:kill (sb-posix:getpid) sb-unix:sigtstp))
+
+(define-key *global-keymap* "C-z" 'suspend-editor)
