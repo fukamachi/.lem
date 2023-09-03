@@ -1,6 +1,8 @@
 (defpackage #:lem-my-init
   (:use #:cl
-        #:lem))
+        #:lem)
+  (:import-from #:lem/frame-multiplexer
+                #:frame-multiplexer))
 (in-package :lem-my-init)
 
 (setf *scroll-recenter-p* nil)
@@ -12,6 +14,11 @@
   (let ((command (first (lem-lisp-mode/implementation::list-roswell-with-qlot-commands))))
     (when command
       (lem-lisp-mode:run-slime command :directory directory))))
+
+(add-hook *after-init-hook*
+          (lambda ()
+            (setf (variable-value 'frame-multiplexer :global) nil))
+          -1)
 
 #+lem-ncurses
 (progn
