@@ -7,7 +7,7 @@
                "lem-lisp-mode"
                "lem-vi-mode"
                "lem-vi-sexp")
-  :components ((:file "modes/10-vi")
-               (:file "modes/10-auto-save")
-               (:file "modes/10-trailing-spaces")
-               (:file "modes/20-lisp-mode")))
+  :components ((:file "modes/vi")
+               (:file "modes/auto-save")
+               (:file "modes/trailing-spaces")
+               (:file "modes/lisp-mode")))
