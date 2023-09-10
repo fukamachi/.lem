@@ -5,22 +5,27 @@
                 #:frame-multiplexer))
 (in-package :lem-my-init)
 
+;; Disable Lem's auto recenter
 (setf *scroll-recenter-p* nil)
 
+;; Dumped image contains the cached source registry
+;; Ensure to reinitialize it to let ASDF find new systems.
+(asdf:clear-source-registry)
+
+;; Load my init files.
 (let ((asdf:*central-registry* (cons #P"~/.lem/" asdf:*central-registry*)))
   (ql:quickload :lem-my-init))
 
-(define-command slime-qlot-exec (directory) ((prompt-for-directory (format nil "Project directory (~A): " (buffer-directory))))
-  (let ((command (first (lem-lisp-mode/implementation::list-roswell-with-qlot-commands))))
-    (when command
-      (lem-lisp-mode:run-slime command :directory directory))))
-
+;; Disable frame-multiplexer, which shows a switcher at the top of the window.
+;; Because I can't find a way to utilize it.
 (add-hook *after-init-hook*
           (lambda ()
             (setf (variable-value 'frame-multiplexer :global) nil))
           -1)
 
-#+lem-ncurses
+;; Allow to suspend Lem by C-z.
+;; It doesn't work well on Mac with Apple Silicon.
+#+(and lem-ncurses (not (and darwin arm64)))
 (progn
   (define-command suspend-editor () ()
     (charms/ll:endwin)
