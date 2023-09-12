@@ -14,10 +14,12 @@
 (setf (option-value "scrolloff") 3)
 
 ;; Requires this because number keys and symbol ones are swapped in my environment.
-(define-key lem-vi-mode:*normal-keymap* "M-!" 'lem/universal-argument:universal-argument-1)
+(define-key *normal-keymap* "M-!" 'lem/universal-argument:universal-argument-1)
 
 ;; Allow to slurp the next element with M-l,
 ;; and to barf the last element with M-h.
 ;; These are my favorite keybinds.
-(define-key lem-vi-mode:*normal-keymap* "M-l" 'vi-sexp-slurp)
-(define-key lem-vi-mode:*normal-keymap* "M-h" 'vi-sexp-barf)
+(define-key *normal-keymap* "M-l" 'vi-sexp-slurp)
+(define-key *normal-keymap* "M-h" 'vi-sexp-barf)
+
+(setf (variable-value 'leader-key :global) "Space")
