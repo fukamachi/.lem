@@ -17,11 +17,8 @@
   (ql:quickload :lem-my-init))
 
 ;; Disable frame-multiplexer, which shows a switcher at the top of the window.
-;; Because I can't find a way to utilize it.
-(add-hook *after-init-hook*
-          (lambda ()
-            (setf (variable-value 'frame-multiplexer :global) nil))
-          -1)
+;; I can't find a good way to utilize it.
+(remove-hook *after-init-hook* 'lem/frame-multiplexer::enable-frame-multiplexer)
 
 ;; Allow to suspend Lem by C-z.
 ;; It doesn't work well on Mac with Apple Silicon.
