@@ -13,7 +13,8 @@
 (asdf:clear-source-registry)
 
 ;; Load my init files.
-(let ((asdf:*central-registry* (cons #P"~/.lem/" asdf:*central-registry*)))
+(let* ((asdf:*central-registry* (cons #P"~/.lem/" asdf:*central-registry*))
+       (asdf:*central-registry* (cons #P"~/common-lisp/" asdf:*central-registry*)))
   (ql:quickload :lem-my-init))
 
 ;; Disable frame-multiplexer, which shows a switcher at the top of the window.
