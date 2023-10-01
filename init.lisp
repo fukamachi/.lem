@@ -8,16 +8,8 @@
 ;; Disable Lem's auto recenter
 (setf *scroll-recenter-p* nil)
 
-;; Dumped image contains the cached source registry
-;; Ensure to reinitialize it to let ASDF find new systems.
-(asdf:clear-source-registry)
-
 ;; Load my init files.
-(let ((asdf:*central-registry* (append (list #P"~/.lem/"
-                                             #P"~/common-lisp/"
-                                             (asdf:system-source-directory :lem)
-                                             (asdf:system-relative-pathname :lem #P"contrib/trailing-spaces/"))
-                                       asdf:*central-registry*)))
+(let ((asdf:*central-registry* (cons #P"~/.lem/" asdf:*central-registry*)))
   (ql:quickload :lem-my-init))
 
 ;; Disable frame-multiplexer, which shows a switcher at the top of the window.
