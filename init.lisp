@@ -10,7 +10,7 @@
 
 ;; Load my init files.
 (let ((asdf:*central-registry* (cons #P"~/.lem/" asdf:*central-registry*)))
-  (ql:quickload :lem-my-init))
+  (ql:quickload :lem-my-init :silent t))
 
 ;; Disable frame-multiplexer, which shows a switcher at the top of the window.
 ;; I can't find a good way to utilize it.
