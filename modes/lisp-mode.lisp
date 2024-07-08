@@ -58,7 +58,7 @@
 ;;
 ;; It also requires micros in the ./.qlot/local-projects directory.
 ;;   $ git clone https://github.com/lem-project/micros .qlot/local-projects
-(define-command slime-qlot-exec (directory) ((prompt-for-directory (format nil "Project directory (~A): " (buffer-directory))))
+(define-command slime-qlot-exec () ()
   (let ((command (first (lem-lisp-mode/implementation::list-roswell-with-qlot-commands))))
     (when command
-      (lem-lisp-mode:run-slime command :directory directory))))
+      (lem-lisp-mode:run-slime command))))
