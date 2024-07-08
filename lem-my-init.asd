@@ -10,4 +10,5 @@
   :components ((:file "modes/vi")
                (:file "modes/auto-save")
                (:file "modes/trailing-spaces")
-               (:file "modes/lisp-mode")))
+               (:file "modes/lisp-mode")
+               (:file "modes/javascript-mode")))
