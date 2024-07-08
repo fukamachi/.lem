@@ -34,7 +34,7 @@
 
 ;; Delete the next element with 'D' instead of deleting to the end-of-line
 ;; to keep the parenthesis balanced.
-(define-command delete-next-sexp-on-paredit-mode (&optional (n 1)) ("p")
+(define-command delete-next-sexp-on-paredit-mode (&optional (n 1)) (:universal)
   (if (find 'vi-sexp (buffer-minor-modes (current-buffer)))
       (dotimes (i n)
         (kill-sexp))
@@ -43,7 +43,7 @@
 
 ;; Delete the next element with 'C' instead of deleting to the end-of-line
 ;; to keep the parenthesis balanced.
-(define-command change-next-sexp-on-paredit-mode (&optional (n 1)) ("p")
+(define-command change-next-sexp-on-paredit-mode (&optional (n 1)) (:universal)
   (if (find 'vi-sexp (buffer-minor-modes (current-buffer)))
       (progn
         (dotimes (i n)
