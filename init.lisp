@@ -25,3 +25,11 @@
     (sb-posix:kill (sb-posix:getpid) sb-unix:sigtstp))
 
   (define-key *global-keymap* "C-z" 'suspend-editor))
+
+#| ;; Coalton LSP server setting (WIP)
+(lem-lsp-mode:define-language-spec (coalton-spec lem-coalton-mode:coalton-mode)
+  :language-id "coalton"
+  :root-uri-patterns '(".asd")
+  :command (lambda (port) `("/Users/eitarofukamachi/common-lisp/coalton-mode/coalton-lsp" ,(princ-to-string port)))
+  :connection-mode :tcp)
+|#

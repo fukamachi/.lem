@@ -5,8 +5,10 @@
   :serial t
   :depends-on ("lem-trailing-spaces"
                "lem-lisp-mode"
+               "lem-coalton-mode"
                "lem-vi-mode"
-               "lem-vi-sexp")
+               "lem-vi-sexp"
+               #+todo "lem-lsp-mode")
   :components ((:file "modes/vi")
                (:file "modes/auto-save")
                (:file "modes/trailing-spaces")

@@ -1,1 +1,1 @@
-(ql:quickload :lem-vi-sexp)
+(ql:quickload '(:lem-vi-sexp :lem-coalton-mode))

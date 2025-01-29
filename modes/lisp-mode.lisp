@@ -1,7 +1,8 @@
 (defpackage #:lem-my-init/modes/lisp-mode
   (:use #:cl
         #:lem
-        #:lem-lisp-mode)
+        #:lem-lisp-mode
+        #:lem-coalton-mode)
   (:import-from #:lem-vi-mode
                 #:change-state
                 #:normal
@@ -19,7 +20,8 @@
 ;; Enable lem-vi-sexp mode for each lisp-mode buffer.
 (lem:add-hook lem:*find-file-hook*
               (lambda (buffer)
-                (when (eq (buffer-major-mode buffer) 'lisp-mode)
+                (when (member (buffer-major-mode buffer) '(lisp-mode coalton-mode)
+                              :test 'eq)
                   (change-buffer-mode buffer 'vi-sexp t))))
 
 ;; For REPL mode, change the vi-mode to INSERT on startup.
