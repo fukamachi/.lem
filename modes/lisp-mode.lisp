@@ -4,7 +4,7 @@
         #:lem-lisp-mode
         #:lem-coalton-mode)
   (:import-from #:lem-vi-mode
-                #:change-state
+                #:buffer-state
                 #:normal
                 #:insert
                 #:*normal-keymap*)
@@ -27,12 +27,12 @@
 ;; For REPL mode, change the vi-mode to INSERT on startup.
 (lem:add-hook lem-lisp-mode:*lisp-repl-mode-hook*
               (lambda ()
-                (change-state 'insert)))
+                (setf (buffer-state (current-buffer)) 'insert)))
 
 ;; For SLDB mode, change the vi-mode to NORMAL.
 (lem:add-hook lem-lisp-mode:*lisp-sldb-mode-hook*
               (lambda ()
-                (change-state 'normal)))
+                (setf (buffer-state (current-buffer)) 'normal)))
 
 ;; Delete the next element with 'D' instead of deleting to the end-of-line
 ;; to keep the parenthesis balanced.
@@ -50,7 +50,7 @@
       (progn
         (dotimes (i n)
           (kill-sexp))
-        (change-state 'insert))
+        (setf (buffer-state (current-buffer)) 'insert))
       (call-command 'vi-change-line n)))
 (define-key *normal-keymap* "C" 'change-next-sexp-on-paredit-mode)
 
